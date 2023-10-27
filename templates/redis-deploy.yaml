@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-deploy
+  labels:
+    name: redis-deploy
+    app: {{ .Values.app }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: redis-pod
+      app: {{ .Values.app }}
+  template:
+    metadata:
+      name: redis-pod
+      labels:
+        name: redis-pod
+        app: {{ .Values.app }}
+    spec:
+      containers:
+      - name: {{ .Values.images.redis.name }}
+        image: {{ .Values.images.redis.image }}
+        ports:
+        - containerPort: {{ .Values.service.ports.redis.port }}

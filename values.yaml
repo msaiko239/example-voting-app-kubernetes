@@ -1,0 +1,38 @@
+app: demo-voting-app
+images:
+  postgres:
+    name: postgres
+    image: postgres 
+  redis:
+    name: redis 
+    image: redis 
+  resultApp:
+    name: result-app
+    image: kodekloud/examplevotingapp_result:v1
+  votingApp:
+    name: voting-app
+    image: kodekloud/examplevotingapp_vote:v1
+  workerApp:
+    name: worker-app
+    image: kodekloud/examplevotingapp_worker:v1
+service:
+  ports:
+    postgres:
+      name: postgres-service 
+      port: 5432
+      targetPort: 5432
+    redis: 
+      name: redis-service
+      port: 6379
+      targetport: 6379
+  type: NodePort
+    resultApp:
+      name: result-service
+      port: 80
+      targetPort: 80
+      nodePort: 31080
+    votingApp:
+      name: voting-service
+      port: 80
+      targetport: 80
+      nodePort: 31081

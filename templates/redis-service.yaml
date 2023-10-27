@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.images.redis.name }}
+  labels:
+    name: {{ .Values.service.ports.redis.name }}
+    app: {{ .Values.app }}
+spec:
+  ports:
+  - port: {{ .Values.service.ports.redis.port }}
+    targetPort: {{ .Values.service.ports.redis.targetPort }}
+  selector:
+    name: redis-pod
+    app: {{ .Values.app }}

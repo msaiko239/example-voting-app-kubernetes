@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  labels:
+    name: {{ .Values.service.ports.postgres.name }}
+    app: {{ .Values.app}}
+spec:
+  ports:
+  - port: {{ .Values.service.ports.postgres.port }}
+    targetPort: {{ .Values.service.ports.postgres.targetPort }}
+  selector:
+    name: postgres-pod
+    app: {{ .Values.app}}
