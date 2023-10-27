@@ -4,4 +4,5 @@ This is based on the original [example-voting-app](https://github.com/dockersamp
 
 and modified it to work on the Kubernetes cluster.
 
-
+**HELM Chart update**
+This version has been modified to be deployed with a helm chart. 
